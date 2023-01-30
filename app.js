@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
+const cors = require("cors")
 require("dotenv").config({path:"config.env"});
 
 const {sequelize} = require("./models/index")
 
 //BodyParsing
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
 
@@ -13,6 +15,8 @@ userRoutes(app);
 
 let bookRoutes =require("./routes/bookRoutes")
 bookRoutes(app);
+
+
 
 
 
